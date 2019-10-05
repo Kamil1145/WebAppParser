@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Property";
+}
+
+<h1>Property</h1>
+<h2>CO sie dzieje</h2>
+
+<html>
+<body>
+    <div>    
+        <ul>
+            @foreach (var item in (Dictionary<string, string>)ViewData["Test"])
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td scope="col">Adres:              </td>
+                    <td scope="col">@ViewData["Address"]</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>
