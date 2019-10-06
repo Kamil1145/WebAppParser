@@ -1,31 +1,85 @@
 ﻿
 @{
-    ViewData["Title"] = "Property";
+    ViewData["Title1"] = "Property";
 }
 
-<h1>Property</h1>
-<h2>CO sie dzieje</h2>
 
 <html>
 <body>
-    <div>    
-        <ul>
-            @foreach (var item in (Dictionary<string, string>)ViewData["Test"])
-            {
-                <li>@item</li>
-            }
-        </ul>
-    </div>
 
-    <div>
-        <table>
-            <thead>
+        <div>
+            <h1>
+                @Property.propertyD["Tytul"]
+            </h1>
+        </div>
+
+        <div>
+            <textarea id="Content" rows="15" cols="120">
+        @ViewData["Content"]
+        </textarea>
+        </div>
+        <div>
+            <table border="1">
+
                 <tr>
-                    <td scope="col">Adres:              </td>
-                    <td scope="col">@ViewData["Address"]</td>
+                    <td width="150">Adres</td>
+                    <td>
+                        <textarea id="Address" cols="40" rows="1" draggable="false">@ViewData["Address"]</textarea>
+                    </td>
+                    <td width="150">Cena</td>
+                    <td>
+                        <textarea id="Prize" cols="30" rows="1">@ViewData["Prize"]</textarea>
+                    </td>
                 </tr>
-            </thead>
-        </table>
-    </div>
+
+                <tr>
+                    <td>Powierzchnia</td>
+                    <td>
+                        <textarea id="Area" cols="40" rows="1">@ViewData["Area"]</textarea>
+                    </td>
+                    <td>Poziom</td>
+                    <td>
+                        <textarea id="Floor" cols="30" rows="1">@ViewData["Floor"]</textarea>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Pokoje</td>
+                    <td>
+                        <textarea id="Rooms" cols="40" rows="1">@ViewData["Rooms"]</textarea>
+                    </td>
+                    <td>Czynsz</td>
+                    <td>
+                        <textarea id="Fee" cols="30" rows="1">@ViewData["Fee"]</textarea>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <hr />
+        <div>
+            <table border="1">
+                <tr>
+                    <td>Pokoje</td>
+                    <td>
+                        <textarea id="Rooms" cols="30" rows="1">@ViewData["Rooms"]</textarea>
+                    </td>
+                    <td>Czynsz</td>
+                    <td>
+                        <textarea id="Fee" cols="30" rows="1">@ViewData["Fee"]</textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <input id="Submit1" type="submit" value="Send" />
+        </div>
+
+        
+
+
+
 </body>
 </html>

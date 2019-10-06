@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebAppParser.Models;
 
 namespace WebAppParser.Controllers
 {
@@ -14,6 +15,7 @@ namespace WebAppParser.Controllers
         {
             return View();
         }
+       
 
         // GET: Property/Details/5
         public ActionResult Details(int id)
@@ -58,7 +60,6 @@ namespace WebAppParser.Controllers
             try
             {
                 // TODO: Add update logic here
-
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -91,8 +92,11 @@ namespace WebAppParser.Controllers
         }
 
 
-
-
-
+        // GET: Property/Edit/5
+        public ActionResult Edit(string content)
+        {
+            Property.propertyD["Opis"] = content;
+            return View("Property");
+        }
     }
 }

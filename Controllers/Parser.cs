@@ -8,10 +8,13 @@ using System.Web;
 using HtmlAgilityPack;
 using WebAppParser.Models;
 using System.Drawing;
+using WebAppParser.Helper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAppParser.Controllers
 {
-    public class Parser
+    public class Parser 
     {
 
         private List<Property> properties = new List<Property>();
@@ -32,7 +35,18 @@ namespace WebAppParser.Controllers
             List<string> tabs2L = new List<string>();
             List<string> imgsL = new List<string>();
 
+            string url; 
             var web = new HtmlWeb();
+
+            if (Validator.ValidateUrl(page))
+            {
+                url = page;
+            }
+            else
+            {
+                throw new Exception("Bad URL");
+            }
+            
             var doc = web.Load(page);
 
             int ind, s;

@@ -30,6 +30,7 @@ namespace WebAppParser.Controllers
 
         public ActionResult Property()
         {
+
             return View();
         }
 
@@ -37,11 +38,22 @@ namespace WebAppParser.Controllers
         public ActionResult Index(string message)
         {
             Parser.ScrapeData(message);
-            ViewData.Model = Models.Property.propertyD;
-            ViewData["Test"] = Models.Property.propertyD;
-            ViewData["Address"] = Models.Property.propertyD["Adres"];
+
+            ViewData["Address"] = ViewDataSort.Sort("Adres");
+            ViewData["Title"] = ViewDataSort.Sort("Tytul");
+            ViewData["Content"] = ViewDataSort.Sort("Opis");
+            ViewData["Prize"] = ViewDataSort.Sort("Cena");
+            ViewData["Rooms"] = ViewDataSort.Sort("Liczba pokoi");
+            ViewData["Floor"] = ViewDataSort.Sort("Poziom");
+            ViewData["Area"] = ViewDataSort.Sort("Powierzchnia");
+            ViewData["Fee"] = ViewDataSort.Sort("Czynsz(dodatkowo)");
+
+
+
             return View("Property");
         }
+
+
     }
 }
  
