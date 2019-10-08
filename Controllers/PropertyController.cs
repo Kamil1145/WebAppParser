@@ -93,9 +93,9 @@ namespace WebAppParser.Controllers
 
 
         // GET: Property/Edit/5
+        [HttpPost]
         public ActionResult Edit(string content)
         {
-            Property.propertyD["Opis"] = content;
             return View("Property");
         }
     }

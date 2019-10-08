@@ -17,154 +17,140 @@ namespace WebAppParser.Controllers
     public class Parser 
     {
 
-        private List<Property> properties = new List<Property>();
-
-        public List<Property> Properties
+        public Dictionary<string, string> Scrape(string url)
         {
-            get { return properties; }
-            set { properties = value; }
-        }
+            Property property = new Property();
 
-        public static void ScrapeData(string page)
-        {
-            List<string> headersL = new List<string>();
-            List<string> contentsL = new List<string>();
-            List<string> addressesL = new List<string>();
-            List<string> pricesL = new List<string>();
-            List<string> tabsL = new List<string>();
-            List<string> tabs2L = new List<string>();
-            List<string> imgsL = new List<string>();
+            List<string> headersList = new List<string>();
+            List<string> contentsList = new List<string>();
+            List<string> addressesList = new List<string>();
+            List<string> pricesList = new List<string>();
+            List<string> contentList = new List<string>();
+            List<string> additionalContentList = new List<string>();
+            List<string> imgsList = new List<string>();
 
-            string url; 
             var web = new HtmlWeb();
+            var doc = web.Load(url);
 
-            if (Validator.ValidateUrl(page))
-            {
-                url = page;
-            }
-            else
-            {
-                throw new Exception("Bad URL");
-            }
-            
-            var doc = web.Load(page);
-
-            int ind, s;
+            int index, s;
             string header, text, loc, price;
 
             var Title = doc.DocumentNode.SelectNodes("//*[@class = 'offer-titlebox']");
             var Content = doc.DocumentNode.SelectNodes("//*[@class='clr descriptioncontent marginbott20']");
             var Address = doc.DocumentNode.SelectNodes("//*[@class='offer-user__address']");
-            var Tab = doc.DocumentNode.SelectNodes("//table[@class='details fixed marginbott20 margintop5 full']/tr/td");
+            var ContentArray = doc.DocumentNode.SelectNodes("//table[@class='details fixed marginbott20 margintop5 full']/tr/td");
             var Price = doc.DocumentNode.SelectNodes("//*[@class='offer-sidebar__inner offeractions']");
             var Photos = doc.DocumentNode.SelectNodes("//*[@class='offerdescription clr']");
 
             foreach (var title in Title)
             {
                 header = HttpUtility.HtmlDecode(title.SelectSingleNode(".//h1").InnerText);
-                headersL.Add(header);
+                headersList.Add(header);
             }
 
 
             foreach (var content in Content)
             {
                 text = HttpUtility.HtmlDecode(content.SelectSingleNode(".//div[@id= 'textContent']").InnerText);
-                contentsL.Add(text);
+                contentsList.Add(text);
             }
 
 
             foreach (var address in Address)
             {
                 loc = HttpUtility.HtmlDecode(address.SelectSingleNode(".//p").InnerText);
-                addressesL.Add(loc);
+                addressesList.Add(loc);
             }
 
 
-            foreach (var cell in Tab)
+            foreach (var cell in ContentArray)
             {
-                tabsL.Add(cell.InnerText);
+                contentList.Add(cell.InnerText);
             }
 
 
             foreach (var prize in Price)
             {
                 price = HttpUtility.HtmlDecode(prize.SelectSingleNode("//*[@id='offeractions']/div[1]/strong").InnerText);
-                pricesL.Add(price);
+                pricesList.Add(price);
             }
 
             foreach (HtmlNode photo in doc.DocumentNode.SelectNodes("//img"))
             {
-
                 string value = photo.GetAttributeValue("src", string.Empty);
                 string link = "https://apollo-ireland.akamaized.net";
 
                 if (string.Compare(value, 0, link, 0, 35) == 0)
                     if (value.IndexOf("644x461") > 0)
-                        imgsL.Add(value);
+                        imgsList.Add(value);
             }
 
-            for (int i = 0; i < imgsL.Count; i++)
+            for (int i = 0; i < imgsList.Count; i++)
             {
                 {
-                    WebRequest requestPic = WebRequest.Create(imgsL[i]);
+                    WebRequest requestPic = WebRequest.Create(imgsList[i]);
                     WebResponse responsePic = requestPic.GetResponse();
                     Image webImage = Image.FromStream(responsePic.GetResponseStream());
                     webImage.Save(@"c:\\temporary\\" + i + ".jpg");
                 }
             }
 
-            headersL.RemoveAll(string.IsNullOrEmpty);
-            contentsL.RemoveAll(string.IsNullOrEmpty);
-            addressesL.RemoveAll(string.IsNullOrEmpty);
-            pricesL.RemoveAll(string.IsNullOrEmpty);
+            headersList.RemoveAll(string.IsNullOrEmpty);
+            contentsList.RemoveAll(string.IsNullOrEmpty);
+            addressesList.RemoveAll(string.IsNullOrEmpty);
+            pricesList.RemoveAll(string.IsNullOrEmpty);
 
-            header = headersL[0];
+            header = headersList[0];
             header = header.Replace("\n", "");
             header = header.Trim();
+            property.Title = header;
 
-            text = contentsL[0];
+            text = contentsList[0];
             text = text.Replace("\n", "");
             text = text.Trim();
+            property.Content = text;
 
-            loc = addressesL[0];
+            loc = addressesList[0];
             loc = loc.Trim();
+            property.Address = loc;
 
-            price = pricesL[0];
+            price = pricesList[0];
+            property.Prize = price;
 
-            for (int i = 0; i < tabsL.Count; i++)
+            for (int i = 0; i < contentList.Count; i++)
             {
-                tabsL[i] = tabsL[i].Replace("\t", "");
-                tabsL[i] = tabsL[i].Replace("&nbsp;", "");
-                tabsL[i] = tabsL[i].Replace("\n", " ");
-                tabsL[i] = tabsL[i].Trim();
-                tabsL[i] = tabsL[i].Replace("\t", "");
-                tabsL[i] = tabsL[i].Replace("\n", "");
+                contentList[i] = contentList[i].Replace("\t", "");
+                contentList[i] = contentList[i].Replace("&nbsp;", "");
+                contentList[i] = contentList[i].Replace("\n", " ");
+                contentList[i] = contentList[i].Trim();
+                contentList[i] = contentList[i].Replace("\t", "");
+                contentList[i] = contentList[i].Replace("\n", "");
 
-                ind = tabsL[i].IndexOf("   ");
-                if (ind == -1)
+                index = contentList[i].IndexOf("   ");
+                if (index == -1)
                 {
                     continue;
                 }
-                tabs2L.Add(tabsL[i].Substring(ind));
-                tabsL[i] = tabsL[i].Remove(ind);
+                additionalContentList.Add(contentList[i].Substring(index));
+                contentList[i] = contentList[i].Remove(index);
             }
 
-            for (int i = 0; i < tabs2L.Count; i++)
+            for (int i = 0; i < additionalContentList.Count; i++)
             {
-                tabs2L[i] = tabs2L[i].Trim();
+                additionalContentList[i] = additionalContentList[i].Trim();
             }
 
-            tabsL.RemoveAll(string.IsNullOrEmpty);
-            tabs2L.RemoveAll(string.IsNullOrEmpty);
+            contentList.RemoveAll(string.IsNullOrEmpty);
+            additionalContentList.RemoveAll(string.IsNullOrEmpty);
 
 
-            if (tabsL.Count > tabs2L.Count)
+            if (contentList.Count > additionalContentList.Count)
             {
-                s = tabsL.Count;
+                s = contentList.Count;
             }
             else
             {
-                s = tabs2L.Count;
+                s = additionalContentList.Count;
             }
 
             Property.propertyD.Add("Tytul", header);
@@ -173,50 +159,54 @@ namespace WebAppParser.Controllers
             Property.propertyD.Add("Cena", price);
 
 
+
+
             for (int i = 0; i < s; i++)
             {
-                switch (tabsL[i])
+                switch (contentList[i])
                 {
                     case "Cena za m²":
-                        Property.propertyD.Add("Cena za m²", tabs2L[i]);
+                        Property.propertyD.Add("Cena za m²", additionalContentList[i]);
                         break;
 
                     case "Umeblowane":
-                        Property.propertyD.Add("Umeblowane", tabs2L[i]);
+                        Property.propertyD.Add("Umeblowane", additionalContentList[i]);
                         break;
 
                     case "Oferta od":
-                        Property.propertyD.Add("Oferta od", tabs2L[i]);
+                        Property.propertyD.Add("Oferta od", additionalContentList[i]);
                         break;
 
                     case "Poziom":
-                        Property.propertyD.Add("Poziom", tabs2L[i]);
+                        Property.propertyD.Add("Poziom", additionalContentList[i]);
                         break;
 
                     case "Rynek":
-                        Property.propertyD.Add("Rynek", tabs2L[i]);
+                        Property.propertyD.Add("Rynek", additionalContentList[i]);
                         break;
 
                     case "Rodzaj zabudowy":
-                        Property.propertyD.Add("Rodzaj zabudowy", tabs2L[i]);
+                        Property.propertyD.Add("Rodzaj zabudowy", additionalContentList[i]);
                         break;
 
                     case "Powierzchnia":
-                        Property.propertyD.Add("Powierzchnia", tabs2L[i]);
+                        Property.propertyD.Add("Powierzchnia", additionalContentList[i]);
                         break;
 
                     case "Liczba pokoi":
-                        Property.propertyD.Add("Liczba pokoi", tabs2L[i]);
+                        Property.propertyD.Add("Liczba pokoi", additionalContentList[i]);
                         break;
 
                     case "Czynsz (dodatkowo)":
-                        Property.propertyD.Add("Czynsz(dodatkowo)", tabs2L[i]);
+                        Property.propertyD.Add("Czynsz(dodatkowo)", additionalContentList[i]);
                         break;
 
                     default:
                         break;
                 }
             }
+
+            return Property.propertyD;
         }
     }
 }

@@ -28,4 +28,6 @@ C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\WebAppParser.Vi
 C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\WebAppParser.dll
 C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\WebAppParser.pdb
 C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\WebAppParser.csproj.CopyComplete
+C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\Razor\Views\Home\Form.g.cshtml.cs
 C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\Razor\Views\Home\Property.g.cshtml.cs
+C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\Razor\Views\Home\SetProperty.g.cshtml.cs

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAppParser.Models;
 
+
 namespace WebAppParser.Controllers
 {
     public class HomeController : Controller
@@ -28,32 +29,55 @@ namespace WebAppParser.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public ActionResult Property()
-        {
-
-            return View();
-        }
+        //public ActionResult Property()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public ActionResult Index(string message)
         {
-            Parser.ScrapeData(message);
-
-            ViewData["Address"] = ViewDataSort.Sort("Adres");
-            ViewData["Title"] = ViewDataSort.Sort("Tytul");
-            ViewData["Content"] = ViewDataSort.Sort("Opis");
-            ViewData["Prize"] = ViewDataSort.Sort("Cena");
-            ViewData["Rooms"] = ViewDataSort.Sort("Liczba pokoi");
-            ViewData["Floor"] = ViewDataSort.Sort("Poziom");
-            ViewData["Area"] = ViewDataSort.Sort("Powierzchnia");
-            ViewData["Fee"] = ViewDataSort.Sort("Czynsz(dodatkowo)");
-
-
-
             return View("Property");
         }
 
+        [HttpGet]
+        public ViewResult Form()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Form(string message)
+        {
+
+            Parser parser = new Parser();
+            var property = parser.Scrape(message);
+            
+
+            return View("Property", property);
+        }
+
+
+        [HttpPut]
+        public ViewResult Property()
+        {
+            return View();
+        }
+
+
+        public ActionResult SetProperty(string Prize, string Content, string Floor, string Area, string Address, string Phone)
+        {
+
+            Property property = new Property();
+            property.Prize = Prize;
+            property.Content = Content;
+            property.Floor = Floor;
+            property.Area = Area;
+            property.Address = Address;
+            property.PhoneNumber = Phone;
+
+            return View("SetProperty",property);
+        }
     }
 }
  

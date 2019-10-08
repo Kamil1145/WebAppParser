@@ -7,16 +7,17 @@
 <html>
 <body>
 
-        <div>
-            <h1>
-                @Property.propertyD["Tytul"]
-            </h1>
-        </div>
+    <div>
+        <h1>
+            @Property.propertyD["Tytul"]
+        </h1>
+    </div>
+
+    <form action="SetProperty" method="post">
 
         <div>
-            <textarea id="Content" rows="15" cols="120">
-        @ViewData["Content"]
-        </textarea>
+            <textarea name="Content" cols="150" rows="20">"@Property.propertyD["Opis"]"</textarea>
+            @*<input name="Content" type="text" value="@Property.propertyD["Opis"]" width="1000" height="200" />*@
         </div>
         <div>
             <table border="1">
@@ -24,60 +25,46 @@
                 <tr>
                     <td width="150">Adres</td>
                     <td>
-                        <textarea id="Address" cols="40" rows="1" draggable="false">@ViewData["Address"]</textarea>
+                        <input name="Address" type="text" value="@Property.propertyD["Adres"]" width="400" height="50" />
                     </td>
                     <td width="150">Cena</td>
                     <td>
-                        <textarea id="Prize" cols="30" rows="1">@ViewData["Prize"]</textarea>
+                        <input name="Prize" type="text" value="@Property.propertyD["Cena"]" width="400" height="50" />
                     </td>
                 </tr>
 
                 <tr>
                     <td>Powierzchnia</td>
                     <td>
-                        <textarea id="Area" cols="40" rows="1">@ViewData["Area"]</textarea>
+                        <input name="Area" type="text" value="@Property.propertyD["Powierzchnia"]" width="400" height="50" />
                     </td>
                     <td>Poziom</td>
                     <td>
-                        <textarea id="Floor" cols="30" rows="1">@ViewData["Floor"]</textarea>
+                        <input name="Floor" type="text" value="@Property.propertyD["Poziom"]" width="400" height="50" />
                     </td>
                 </tr>
-
 
                 <tr>
                     <td>Pokoje</td>
                     <td>
-                        <textarea id="Rooms" cols="40" rows="1">@ViewData["Rooms"]</textarea>
+                        <input name="Rooms" type="text" value="@Property.propertyD["Liczba pokoi"]" width="400" height="50" />
                     </td>
                     <td>Czynsz</td>
                     <td>
-                        <textarea id="Fee" cols="30" rows="1">@ViewData["Fee"]</textarea>
+                        <input name="Fee" type="text" value="@Property.propertyD["Czynsz(dodatkowo)"]" width="400" height="50" />
                     </td>
                 </tr>
 
             </table>
         </div>
         <hr />
-        <div>
-            <table border="1">
-                <tr>
-                    <td>Pokoje</td>
-                    <td>
-                        <textarea id="Rooms" cols="30" rows="1">@ViewData["Rooms"]</textarea>
-                    </td>
-                    <td>Czynsz</td>
-                    <td>
-                        <textarea id="Fee" cols="30" rows="1">@ViewData["Fee"]</textarea>
-                    </td>
-                </tr>
-            </table>
-        </div>
 
-        <div>
-            <input id="Submit1" type="submit" value="Send" />
-        </div>
 
-        
+
+        <input type="submit" value="send" />
+    </form>
+
+
 
 
 
