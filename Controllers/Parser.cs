@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAppParser.Controllers
 {
-    public class Parser 
+    public class Parser
     {
 
         public Dictionary<string, string> Scrape(string url)
@@ -34,6 +34,7 @@ namespace WebAppParser.Controllers
 
             int index, s;
             string header, text, loc, price;
+            string path = @"C:\Users\Kamil\source\repos\WebAppParser\Content\images\";
 
             var Title = doc.DocumentNode.SelectNodes("//*[@class = 'offer-titlebox']");
             var Content = doc.DocumentNode.SelectNodes("//*[@class='clr descriptioncontent marginbott20']");
@@ -41,6 +42,8 @@ namespace WebAppParser.Controllers
             var ContentArray = doc.DocumentNode.SelectNodes("//table[@class='details fixed marginbott20 margintop5 full']/tr/td");
             var Price = doc.DocumentNode.SelectNodes("//*[@class='offer-sidebar__inner offeractions']");
             var Photos = doc.DocumentNode.SelectNodes("//*[@class='offerdescription clr']");
+
+            Utils.FilesDeleter(path);
 
             foreach (var title in Title)
             {
@@ -91,7 +94,9 @@ namespace WebAppParser.Controllers
                     WebRequest requestPic = WebRequest.Create(imgsList[i]);
                     WebResponse responsePic = requestPic.GetResponse();
                     Image webImage = Image.FromStream(responsePic.GetResponseStream());
-                    webImage.Save(@"c:\\temporary\\" + i + ".jpg");
+                    string imagePath = path + "image_" + i + ".jpg";
+                    webImage.Save(imagePath);
+                    Property.propertyD.Add("Zdjecie_" + i, imagePath);
                 }
             }
 

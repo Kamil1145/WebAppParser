@@ -31,3 +31,5 @@ C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\WebAppParser.cs
 C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\Razor\Views\Home\Form.g.cshtml.cs
 C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\Razor\Views\Home\Property.g.cshtml.cs
 C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\Razor\Views\Home\SetProperty.g.cshtml.cs
+C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\WebAppParser.Properties.Resources.resources
+C:\Users\Kamil\source\repos\WebAppParser\obj\Debug\netcoreapp2.2\WebAppParser.csproj.GenerateResource.cache

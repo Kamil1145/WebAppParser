@@ -10,6 +10,7 @@ namespace WebAppParser.Models
     {
         public static Dictionary<string, string> propertyD = new Dictionary<string, string>();
 
+        public string Id { get; set; }
         public string Url { get; set; }
         public string Title{ get; set; }
         public string Content { get; set; }
@@ -25,5 +26,8 @@ namespace WebAppParser.Models
         public string Trade { get; set; }
         public string Fee { get; set; }
         public string PhoneNumber { get; set; }
+        public string Parking { get; set; }
+        public string Bathrooms { get; set; }
+    
     }
 }

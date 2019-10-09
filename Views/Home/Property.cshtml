@@ -7,18 +7,17 @@
 <html>
 <body>
 
-    <div>
-        <h1>
-            @Property.propertyD["Tytul"]
-        </h1>
-    </div>
+
 
     <form action="SetProperty" method="post">
+        <p>
+            <textarea name="Title" cols="150" rows="1">"@Property.propertyD["Tytul"]"</textarea>
+        </p>
 
         <div>
             <textarea name="Content" cols="150" rows="20">"@Property.propertyD["Opis"]"</textarea>
-            @*<input name="Content" type="text" value="@Property.propertyD["Opis"]" width="1000" height="200" />*@
         </div>
+
         <div>
             <table border="1">
 
@@ -52,6 +51,28 @@
                     <td>Czynsz</td>
                     <td>
                         <input name="Fee" type="text" value="@Property.propertyD["Czynsz(dodatkowo)"]" width="400" height="50" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Umeblowane</td>
+                    <td>
+                        <input name="Furnitured" type="text" value="@Property.propertyD["Umeblowane"]" width="400" height="50" />
+                    </td>
+                    <td>Rodzaj zabudowy</td>
+                    <td>
+                        <input name="Development" type="text" value="@Property.propertyD["Rodzaj zabudowy"]" width="400" height="50" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Parking</td>
+                    <td>
+                        <input name="Parking" type="text" value="" width="400" height="50" />
+                    </td>
+                    <td>Liczba łazienek</td>
+                    <td>
+                        <input name="Bathrooms" type="text" value="" width="400" height="50" />
                     </td>
                 </tr>
 
