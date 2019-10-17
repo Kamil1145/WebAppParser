@@ -24,7 +24,7 @@
                 <tr>
                     <td width="150">Adres</td>
                     <td>
-                        <input name="Address" type="text" value="@Property.propertyD["Adres"]" width="400" height="50" />
+                        <input name="Address" type="text" value="@Property.propertyD["Adres"]" width="700" height="50" />
                     </td>
                     <td width="150">Cena</td>
                     <td>
@@ -35,7 +35,7 @@
                 <tr>
                     <td>Powierzchnia</td>
                     <td>
-                        <input name="Area" type="text" value="@Property.propertyD["Powierzchnia"]" width="400" height="50" />
+                        <input name="Area" type="text" value="@Property.propertyD["Powierzchnia"]" width="700" height="50" />
                     </td>
                     <td>Poziom</td>
                     <td>
@@ -46,18 +46,33 @@
                 <tr>
                     <td>Pokoje</td>
                     <td>
-                        <input name="Rooms" type="text" value="@Property.propertyD["Liczba pokoi"]" width="400" height="50" />
+                        <input name="Rooms" type="text" value="@Property.propertyD["Liczba pokoi"]" width="700" height="50" />
                     </td>
                     <td>Czynsz</td>
                     <td>
-                        <input name="Fee" type="text" value="@Property.propertyD["Czynsz(dodatkowo)"]" width="400" height="50" />
+                        @if (Property.propertyD.ContainsKey("Czynsz(dodatkowo)"))
+                        {
+                            <input name="Fee" type="text" value="@Property.propertyD["Czynsz(dodatkowo)"]" width="400" height="50" />
+                        }
+                        else
+                        {
+                            <input name="Fee" type="text" value="-" width="400" height="50" />
+                        }
                     </td>
                 </tr>
 
                 <tr>
                     <td>Umeblowane</td>
                     <td>
-                        <input name="Furnitured" type="text" value="@Property.propertyD["Umeblowane"]" width="400" height="50" />
+                        @if (Property.propertyD.ContainsKey("Umeblowane"))
+                        {
+                            <input name="Furnitured" type="text" value="@Property.propertyD["Umeblowane"]" width="400" height="50" />
+                        }
+                        else
+                        {
+                            <input name="Furnitured" type="text" value="-" width="400" height="50" />
+
+                        }
                     </td>
                     <td>Rodzaj zabudowy</td>
                     <td>

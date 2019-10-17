@@ -41,9 +41,13 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.3.0, )"
+            },
             "HtmlAgilityPack": {
               "target": "Package",
-              "version": "[1.11.15, )"
+              "version": "[1.11.16, )"
             },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
@@ -77,6 +81,10 @@
             "System.Drawing.Common": {
               "target": "Package",
               "version": "[4.6.0, )"
+            },
+            "WebUI": {
+              "target": "Package",
+              "version": "[1.0.6.1, )"
             }
           },
           "imports": [

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "3a5e77d76f723082222081efcc82fcc3166dc696"
+    "signature": "5568df8e8339448bec3c501d02548c67b3570cc9"
   },
   "compilationOptions": {
     "defines": [
@@ -24,14 +24,16 @@
     ".NETCoreApp,Version=v2.2": {
       "WebAppParser/1.0.0": {
         "dependencies": {
-          "HtmlAgilityPack": "1.11.15",
+          "EntityFramework": "6.3.0",
+          "HtmlAgilityPack": "1.11.16",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
           "MySql.Data": "8.0.17",
           "System.Data.SqlClient": "4.7.0",
-          "System.Drawing.Common": "4.6.0"
+          "System.Drawing.Common": "4.6.0",
+          "WebUI": "1.0.6.1"
         },
         "runtime": {
           "WebAppParser.dll": {}
@@ -56,6 +58,7 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+      "EntityFramework/6.3.0": {},
       "Google.Protobuf/3.6.1": {
         "dependencies": {
           "NETStandard.Library": "2.0.3"
@@ -70,7 +73,7 @@
           "lib/netstandard1.0/Google.Protobuf.dll": {}
         }
       },
-      "HtmlAgilityPack/1.11.15": {
+      "HtmlAgilityPack/1.11.16": {
         "dependencies": {
           "System.Net.Http": "4.3.2",
           "System.Xml.XPath": "4.3.0",
@@ -79,8 +82,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
-            "assemblyVersion": "1.11.15.0",
-            "fileVersion": "1.11.15.0"
+            "assemblyVersion": "1.11.16.0",
+            "fileVersion": "1.11.16.0"
           }
         },
         "compile": {
@@ -875,6 +878,17 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
+        }
+      },
+      "WebUI/1.0.6.1": {
+        "runtime": {
+          "lib/net40/ClassLibrary1.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net40/ClassLibrary1.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3968,6 +3982,13 @@
       "path": "bouncycastle.netcore/1.8.3",
       "hashPath": "bouncycastle.netcore.1.8.3.nupkg.sha512"
     },
+    "EntityFramework/6.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mEvhoXscTyLFMcnbLzKlbWdx6N8fCY2IMe4drjUTMFqOqI4KThnTPXr1m50oXDJAn5PvCy2e90IcwN/OxkJUjg==",
+      "path": "entityframework/6.3.0",
+      "hashPath": "entityframework.6.3.0.nupkg.sha512"
+    },
     "Google.Protobuf/3.6.1": {
       "type": "package",
       "serviceable": true,
@@ -3975,12 +3996,12 @@
       "path": "google.protobuf/3.6.1",
       "hashPath": "google.protobuf.3.6.1.nupkg.sha512"
     },
-    "HtmlAgilityPack/1.11.15": {
+    "HtmlAgilityPack/1.11.16": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-p4OkG6x9jGrIcv3kdMy7B0OHKm9V5qrOqse1RIqsfYFeogNrHIn9dGgUFxKcH8C525dfKAONd3eN2DAE3RITWg==",
-      "path": "htmlagilitypack/1.11.15",
-      "hashPath": "htmlagilitypack.1.11.15.nupkg.sha512"
+      "sha512": "sha512-IKHb7W0ak32dLCEiQlaET1m8dfD4NaH3gGUPre1eUCnsOrx0iM/YOytXAiyMXMcAO9p6xNypaXVuNx4a0XKFrQ==",
+      "path": "htmlagilitypack/1.11.16",
+      "hashPath": "htmlagilitypack.1.11.16.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",
@@ -4296,6 +4317,13 @@
       "sha512": "sha512-A/uxsWi/Ifzkmd4ArTLISMbfFs6XpRPsXZonrIqyTY70xi8t+mDtvSM5Os0RqyRDobjMBwIDHDL4NOIbkDwf7A==",
       "path": "system.xml.xpath.xmldocument/4.3.0",
       "hashPath": "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "WebUI/1.0.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PdCFD/rBPF5QIKQ13bbxCkD3OEdLcOT94F6TDhTe41n0k3+GRR/CtBxXKvWAyCsI5HrahAvjuEGfXlvsBavStg==",
+      "path": "webui/1.0.6.1",
+      "hashPath": "webui.1.0.6.1.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",

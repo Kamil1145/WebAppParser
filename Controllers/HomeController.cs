@@ -51,8 +51,11 @@ namespace WebAppParser.Controllers
         public ActionResult Form(string message)
         {
 
-            Parser parser = new Parser();
-            var property = parser.Scrape(message);
+            ParseManager parseManager = new ParseManager();
+            var property = parseManager.Selector(message);
+
+            //OlxParser parser = new OlxParser();
+            //var property = parser.Scrape(message);
             
 
             return View("Property", property);

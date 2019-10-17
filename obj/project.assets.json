@@ -16,6 +16,13 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+      "EntityFramework/6.3.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/EntityFramework.props": {},
+          "buildTransitive/EntityFramework.targets": {}
+        }
+      },
       "Google.Protobuf/3.6.1": {
         "type": "package",
         "dependencies": {
@@ -28,7 +35,7 @@
           "lib/netstandard1.0/Google.Protobuf.dll": {}
         }
       },
-      "HtmlAgilityPack/1.11.15": {
+      "HtmlAgilityPack/1.11.16": {
         "type": "package",
         "dependencies": {
           "System.Net.Http": "4.3.2",
@@ -5011,6 +5018,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "WebUI/1.0.6.1": {
+        "type": "package",
+        "compile": {
+          "lib/net40/ClassLibrary1.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ClassLibrary1.dll": {}
+        }
       }
     }
   },
@@ -5042,6 +5058,57 @@
         "lib/xamarinios/BouncyCastle.Crypto.xml"
       ]
     },
+    "EntityFramework/6.3.0": {
+      "sha512": "mEvhoXscTyLFMcnbLzKlbWdx6N8fCY2IMe4drjUTMFqOqI4KThnTPXr1m50oXDJAn5PvCy2e90IcwN/OxkJUjg==",
+      "type": "package",
+      "path": "entityframework/6.3.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/EntityFramework.props",
+        "build/EntityFramework.targets",
+        "build/Microsoft.Data.Entity.Build.Tasks.dll",
+        "buildTransitive/EntityFramework.props",
+        "buildTransitive/EntityFramework.targets",
+        "content/net40/App.config.install.xdt",
+        "content/net40/App.config.transform",
+        "content/net40/Web.config.install.xdt",
+        "content/net40/Web.config.transform",
+        "entityframework.6.3.0.nupkg.sha512",
+        "entityframework.nuspec",
+        "lib/net40/EntityFramework.SqlServer.dll",
+        "lib/net40/EntityFramework.SqlServer.xml",
+        "lib/net40/EntityFramework.dll",
+        "lib/net40/EntityFramework.xml",
+        "lib/net45/EntityFramework.SqlServer.dll",
+        "lib/net45/EntityFramework.SqlServer.xml",
+        "lib/net45/EntityFramework.dll",
+        "lib/net45/EntityFramework.xml",
+        "lib/netstandard2.1/EntityFramework.SqlServer.dll",
+        "lib/netstandard2.1/EntityFramework.SqlServer.xml",
+        "lib/netstandard2.1/EntityFramework.dll",
+        "lib/netstandard2.1/EntityFramework.xml",
+        "tools/EntityFramework6.PS2.psd1",
+        "tools/EntityFramework6.PS2.psm1",
+        "tools/EntityFramework6.psd1",
+        "tools/EntityFramework6.psm1",
+        "tools/about_EntityFramework6.help.txt",
+        "tools/init.ps1",
+        "tools/install.ps1",
+        "tools/net40/any/ef6.exe",
+        "tools/net40/any/ef6.pdb",
+        "tools/net40/win-x86/ef6.exe",
+        "tools/net40/win-x86/ef6.pdb",
+        "tools/net45/any/ef6.exe",
+        "tools/net45/any/ef6.pdb",
+        "tools/net45/win-x86/ef6.exe",
+        "tools/net45/win-x86/ef6.pdb",
+        "tools/netcoreapp3.0/any/ef6.dll",
+        "tools/netcoreapp3.0/any/ef6.pdb",
+        "tools/netcoreapp3.0/any/ef6.runtimeconfig.json"
+      ]
+    },
     "Google.Protobuf/3.6.1": {
       "sha512": "741fGeDQjixBJaU2j+0CbrmZXsNJkTn/hWbOh4fLVXndHsCclJmWznCPWrJmPoZKvajBvAz3e8ECJOUvRtwjNQ==",
       "type": "package",
@@ -5057,18 +5124,15 @@
         "lib/netstandard1.0/Google.Protobuf.xml"
       ]
     },
-    "HtmlAgilityPack/1.11.15": {
-      "sha512": "p4OkG6x9jGrIcv3kdMy7B0OHKm9V5qrOqse1RIqsfYFeogNrHIn9dGgUFxKcH8C525dfKAONd3eN2DAE3RITWg==",
+    "HtmlAgilityPack/1.11.16": {
+      "sha512": "IKHb7W0ak32dLCEiQlaET1m8dfD4NaH3gGUPre1eUCnsOrx0iM/YOytXAiyMXMcAO9p6xNypaXVuNx4a0XKFrQ==",
       "type": "package",
-      "path": "htmlagilitypack/1.11.15",
+      "path": "htmlagilitypack/1.11.16",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.11.15.nupkg.sha512",
+        "htmlagilitypack.1.11.16.nupkg.sha512",
         "htmlagilitypack.nuspec",
-        "lib/Net20/HtmlAgilityPack.dll",
-        "lib/Net20/HtmlAgilityPack.pdb",
-        "lib/Net20/HtmlAgilityPack.xml",
         "lib/Net35/HtmlAgilityPack.dll",
         "lib/Net35/HtmlAgilityPack.pdb",
         "lib/Net35/HtmlAgilityPack.xml",
@@ -13754,18 +13818,33 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "WebUI/1.0.6.1": {
+      "sha512": "PdCFD/rBPF5QIKQ13bbxCkD3OEdLcOT94F6TDhTe41n0k3+GRR/CtBxXKvWAyCsI5HrahAvjuEGfXlvsBavStg==",
+      "type": "package",
+      "path": "webui/1.0.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/ClassLibrary1.dll",
+        "lib/net40/ClassLibrary1.dll",
+        "webui.1.0.6.1.nupkg.sha512",
+        "webui.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "HtmlAgilityPack >= 1.11.15",
+      "EntityFramework >= 6.3.0",
+      "HtmlAgilityPack >= 1.11.16",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.3",
       "MySql.Data >= 8.0.17",
       "System.Data.SqlClient >= 4.7.0",
-      "System.Drawing.Common >= 4.6.0"
+      "System.Drawing.Common >= 4.6.0",
+      "WebUI >= 1.0.6.1"
     ]
   },
   "packageFolders": {
@@ -13809,9 +13888,13 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
+          "EntityFramework": {
+            "target": "Package",
+            "version": "[6.3.0, )"
+          },
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "[1.11.15, )"
+            "version": "[1.11.16, )"
           },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
@@ -13845,6 +13928,10 @@
           "System.Drawing.Common": {
             "target": "Package",
             "version": "[4.6.0, )"
+          },
+          "WebUI": {
+            "target": "Package",
+            "version": "[1.0.6.1, )"
           }
         },
         "imports": [
@@ -13854,5 +13941,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Pakiet „WebUI 1.0.6.1” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1” zamiast platformy docelowej projektu „.NETCoreApp,Version=v2.2”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
+      "libraryId": "WebUI",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    }
+  ]
 }
