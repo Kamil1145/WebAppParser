@@ -1,0 +1,75 @@
+﻿@using WebAppParser.Models
+
+@{ 
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SetProperty</title>
+</head>
+
+<body>
+    <div>
+        <h1>@Model.Title</h1>
+        <hr />
+
+        <div>
+            <table border="1">
+
+                <tr>
+                    <td width="150">Poziom</td>
+                    <td>
+                        <input name="Floor" type="text" value="@Model.Floor" width="400" height="50" />
+                    </td>
+                    <td width="150">Umeblowanie</td>
+                    <td>
+                        <input name="Furnitured" type="text" value="@Model.Furnitured" width="400" height="50" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Powierzchnia</td>
+                    <td>
+                        <input name="Area" type="text" value="@Model.Area" width="400" height="50" />
+                    </td>
+                    <td>Zabudowa</td>
+                    <td>
+                        <input name="Development" type="text" value="@Model.Development" width="400" height="50" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Liczba pokoi</td>
+                    <td>
+                        <input name="Rooms" type="text" value="@Model.Rooms" width="400" height="50" />
+                    </td>
+                    <td>Parking</td>
+                    <td>
+                        <input name="Parking" type="text" value="@Model.Parking" width="400" height="50" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Liczba łazienek</td>
+                    <td>
+                        <input name="Bathrooms" type="text" value="@Model.Bathrooms" width="400" height="50" />
+                    </td>
+
+                </tr>
+
+
+            </table>
+        </div>
+
+        <a><img src="@Url.Content("~/Content/images/image_2.jpg")" width="400" height="400" /></a>
+
+        <img src='<%= Path.ResolveClientUrl("~/Content/images/image_2.jpg") %>' alt="" />
+
+    </div>
+</body>
+</html>
