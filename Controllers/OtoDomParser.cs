@@ -107,23 +107,17 @@ namespace WebAppParser.Controllers
             header = headersList[0];
             header = header.Replace("\n", "");
             header = header.Trim();
-            property.Title = header;
 
             text = contentsList[0];
-            //text = text.Replace("\n", "");
             text = text.Trim();
-            property.Content = text;
 
             loc = addressesList[0];
             loc = loc.Trim();
-            property.Address = loc;
 
             price = pricesList[0];
-            property.Prize = price;
 
 
             table = contentList[0];
-
             table = table.Replace("<strong>", "");
             table = table.Replace("</strong>", "");
             table = table.Replace("<ul>", "");
@@ -137,10 +131,10 @@ namespace WebAppParser.Controllers
             while (table.Length > 0)
             {
                 string key = table.Substring(0, table.IndexOf(":"));
-                table = table.Replace(key, "");
+                table = table.Remove(0, table.IndexOf(":"));
                 table = table.Remove(0, 2);
                 string value = table.Substring(0, table.IndexOf("<"));
-                table = table.Replace(value, "");
+                table = table.Remove(0, table.IndexOf("<"));
                 Property.propertyD.Add(key, value);
                 table = table.Remove(0, 1);
             }

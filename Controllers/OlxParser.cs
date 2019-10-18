@@ -27,11 +27,8 @@ namespace WebAppParser.Controllers
             web.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36";
             var doc = web.Load(url);
 
-
-
-
             int index, s;
-            string header, text, loc, price;
+            string header, text, loc, price, phone;
             string path = @"C:\Users\Kamil\source\repos\WebAppParser\Content\images\";
 
             var Title = doc.DocumentNode.SelectNodes("//*[@class = 'offer-titlebox']");
@@ -49,13 +46,11 @@ namespace WebAppParser.Controllers
                 headersList.Add(header);
             }
 
-
             foreach (var content in Content)
             {
                 text = HttpUtility.HtmlDecode(content.SelectSingleNode(".//div[@id= 'textContent']").InnerText);
                 contentsList.Add(text);
             }
-
 
             foreach (var address in Address)
             {
@@ -63,12 +58,10 @@ namespace WebAppParser.Controllers
                 addressesList.Add(loc);
             }
 
-
             foreach (var cell in ContentArray)
             {
                 contentList.Add(cell.InnerText);
             }
-
 
             foreach (var prize in Price)
             {
@@ -106,19 +99,18 @@ namespace WebAppParser.Controllers
             header = headersList[0];
             header = header.Replace("\n", "");
             header = header.Trim();
-            property.Title = header;
 
             text = contentsList[0];
             text = text.Replace("\n", "");
             text = text.Trim();
-            property.Content = text;
 
             loc = addressesList[0];
             loc = loc.Trim();
-            property.Address = loc;
 
             price = pricesList[0];
-            property.Prize = price;
+
+            //OlxPhone olxPhone = new OlxPhone();
+            //phone = olxPhone.ParseNumber(url);
 
             for (int i = 0; i < contentList.Count; i++)
             {
@@ -156,11 +148,12 @@ namespace WebAppParser.Controllers
                 s = additionalContentList.Count;
             }
 
+
             Property.propertyD.Add("Tytul", header);
             Property.propertyD.Add("Opis", text);
             Property.propertyD.Add("Adres", loc);
             Property.propertyD.Add("Cena", price);
-
+            //Property.propertyD.Add("Telefon", phone);
 
             for (int i = 0; i < s; i++)
             {

@@ -29,6 +29,7 @@ namespace WebAppParser.Models
         public string Parking { get; set; }
         public string Bathrooms { get; set; }
         public string Heating { get; set; }
+        public string Floors { get; set; }
 
     }
 }

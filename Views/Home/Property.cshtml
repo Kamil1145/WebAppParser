@@ -7,8 +7,6 @@
 <html>
 <body>
 
-
-
     <form action="SetProperty" method="post">
         <p>
             <textarea name="Title" cols="150" rows="1">"@Property.propertyD["Tytul"]"</textarea>
@@ -39,7 +37,15 @@
                     </td>
                     <td>Poziom</td>
                     <td>
+                        @if (Property.propertyD.ContainsKey("Poziom"))
+                        {
                         <input name="Floor" type="text" value="@Property.propertyD["Poziom"]" width="400" height="50" />
+                        }
+                        else
+                        {
+                        <input name="Floor" type="text" value="@Property.propertyD["Liczba pięter"]" width="400" height="50" />
+                        }
+
                     </td>
                 </tr>
 
